@@ -1,8 +1,39 @@
-#cards{
-display: flex;
-width: 100%;
-flex-wrap: wrap;
+body{
+    font-family: "Merriweather", serif;
+    font-weight: 400;
+    font-style: normal;
 }
-#card{
-    display: flex;    
+.card{
+display: flex;
+justify-content: center;
+margin-right: 30px;
+margin-top: 40px;
+width:400px;
+height: 380px;
+box-shadow: 3px 3px 3px 3px rgb(214, 214, 214);
+}
+#card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;   
+}
+.cardImg{
+width:400px ;
+height: 200px;
+align-items: center;
+}
+img{    
+display: block;
+max-width: 300px;
+max-height: 170px;
+margin-top: 20px;
+}
+h2{
+display: flex ;
+justify-content: center;
+margin-top: 40px;
+font-weight: bold;
+}
+h5{
+    font-weight: bold;
 }

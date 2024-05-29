@@ -1,4 +1,6 @@
 let allData=[];
+let searchInput= document.getElementById('searchInput');
+let searchBtn= document.getElementById('searchBtn');
 getData();
 async function getData()
 {
@@ -9,15 +11,15 @@ async function getData()
 //  console.log(allData);
 }
 //-----------------------------------------------------------------
-function displayData(){
+function displayData(products=allData){
 let dataContainer=``;
-for(let i=0; i<allData.length; i++){
+for(let i=0; i<products.length; i++){
 dataContainer+=`   
 <div class="card" style="width: 18rem;">
-  <img src="${allData[i].image}" class="card-img-top" alt="Product Image">
+  <img src="${products[i].image}" class="card-img-top" alt="Product Image">
   <div class="card-body">
-  <h5 class="card-title">${allData[i].title.substring(0, 50)}</h5>
-  <p class="card-text">${allData[i].description.substring(0, 100)}</p>
+  <h5 class="card-title">${products[i].title.substring(0, 50)}</h5>
+  <p class="card-text">${products[i].description.substring(0, 100)}</p>
   </div>
 </div>`
 }
@@ -29,16 +31,19 @@ function searchData(term){
     console.log('Data not yet fetched.');
     return;
 }
-  console.log(`Search term: ${term}`); // Log the search term
+  // console.log(`Search term: ${term}`); 
   let matchedProducts = [];
   for (let i = 0; i < allData.length; i++) {
-      console.log(`Checking title: ${allData[i].title}`); // Log each title
+      // console.log(`Checking title: ${allData[i].title}`); 
       if (allData[i].title.toLowerCase().includes(term.toLowerCase())) {
           matchedProducts.push(allData[i]);
       }
-      console.log(`Checking title: ${allData[i].title}`);
+      // console.log(`Checking title: ${allData[i].title}`);
   }
-  
-  console.log(`Matched products:`, matchedProducts);
+  displayData(matchedProducts);
+  // console.log(`Matched products:`, matchedProducts);
 }
-searchData("p");
+searchBtn.addEventListener('click', function(event){
+  event.preventDefault();
+  searchData(searchInput.value);
+})
